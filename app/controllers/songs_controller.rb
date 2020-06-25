@@ -39,7 +39,7 @@ class SongsController < ApplicationController
 
     end    
     
-    delete 'songs/:id' do 
+    delete '/songs/:id' do 
         @song = Song.find_by_id(params[:id])
         @song.delete
 
