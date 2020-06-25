@@ -1,5 +1,4 @@
 <%if is_loggged_in? %>
-<h1> <%= current_user.username%> </h1>
 
 <form action="/songs/<%=@song.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">

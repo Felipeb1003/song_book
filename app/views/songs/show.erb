@@ -1,6 +1,5 @@
 <%if is_loggged_in? %>
 
- <h1> <%=current_user.username%> </h1>
 
     <ul>
     <h3> Title: <%=@song.title%> </h3>
@@ -13,6 +12,10 @@
     <form action="/songs/<%=@song.id%>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="Delete">
     <input type="submit" value="Delete">
+    </form>
+
+    <form action="/songs/<%=@song.id%>/edit" method="GET">
+    <input type="submit" value="Edit">
     </form>
 
     <p><a href="/users/:id">Home</a></p>
