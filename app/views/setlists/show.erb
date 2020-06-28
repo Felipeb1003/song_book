@@ -1,22 +1,25 @@
-<%if is_loggged_in? %>
+<h1><%=@setlist.user.username%></h1>
 
+   <p><label>Name: </label> <%=@setlist.name%></p>
+   <p><label>Type of Show: </label> <%=@setlist.type_of_show%></p>
+   <p><label>Location: </label> <%=@setlist.location%></p>
+   <p><label>Date: </label> <%=@setlist.date%></p>
 
-    <ul>
-    <h3> Name: <%=@setlist.name%> </h3>
-    <h3>Type of Show: <%=@setlist.type_of_show%> </h3><br>
-    <h4>Location: <%=@setlist.location%> </h4><br>
-    <h4>Date: <%=@setlist.date%> </h4><br>
-    </ul>
-    
-    <ol>
+   <ol>
+      <%@setlist.songs.each do |song|%>
+         <li><a href="/songs/<%=song.id%>"><%=song.title%></a> -- <%=song.artist%></li><br>
+      <%end%>
+   </ol>
+     
+   <%if @setlist.user == current_user%>
+      <div>
+         <form action="/setlists/<%=@setlist.id%>/edit" method="GET" class="edit_and_delete">
+            <input type="submit" value="Edit">
+         </form>
 
-    </ol>
-
-    <form action="/songs/<%=@song.id%>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="Delete">
-    <input type="submit" value="Delete">
-    </form>
-
-    <p><a href="/users/:id">Home</a></p>
-    <p><a href="/users/logout">Log Out</a></p>
-<%end%>
+         <form action="/setlists/<%=@setlist.id%>" method="POST"class="edit_and_delete">
+            <input id="hidden" type="hidden" name="_method" value="Delete" >
+            <input type="submit" value="Delete">
+         </form>
+      </div>
+   <%end%>
