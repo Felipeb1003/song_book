@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200625074759) do
+ActiveRecord::Schema.define(version: 20200626052514) do
+
+  create_table "setlist_songs", force: :cascade do |t|
+    t.integer "setlist_id"
+    t.integer "song_id"
+    t.integer "order"
+  end
 
   create_table "setlists", force: :cascade do |t|
     t.string  "name"
@@ -19,7 +25,6 @@ ActiveRecord::Schema.define(version: 20200625074759) do
     t.string  "location"
     t.date    "date"
     t.integer "user_id"
-    t.integer "song_id"
   end
 
   create_table "songs", force: :cascade do |t|
@@ -29,7 +34,6 @@ ActiveRecord::Schema.define(version: 20200625074759) do
     t.text    "duration"
     t.text    "lyrics"
     t.integer "user_id"
-    t.integer "setlist_id"
   end
 
   create_table "users", force: :cascade do |t|
