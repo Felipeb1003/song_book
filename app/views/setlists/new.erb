@@ -1,26 +1,24 @@
-<%if is_loggged_in? %>
 <h1>Create a New Setlist:</h1>
 
-<form action="/setlists" method="POST">
-  <label>Name of Setlist: </label>
-  <input type="text" name="setlist[name]" id="setlist_name"  required><br><br>
+  <form action="/setlists" method="POST">
+    <label>Name of Setlist: </label>
+    <input type="text" name="setlist[name]" id="setlist_name"  required><br><br>
 
-  <label>Type of show: </label>
-  <input type="text" name="setlist[type_of_show]" id="setlist_type_of_show" required><br><br>
+    <label>Type of show: </label>
+    <input type="text" name="setlist[type_of_show]" id="setlist_type_of_show" required><br><br>
 
-  <label>Location: </label>
-  <input type="text" name="setlist[location]" id="setlist_location"><br><br>
+    <label>Location: </label>
+    <input type="text" name="setlist[location]" id="setlist_location"><br><br>
 
-  <label>Date: </label>
-  <input type='date' name="setlist[date]" id="setlist_date"><br><br>
+    <label>Date: </label>
+    <input type='date' name="setlist[date]" id="setlist_date"><br><br>
 
-  <h3>Select any song to add to your setlist</h3>
-   <% @songs.each do |song| %>
-    <input type="checkbox" name="setlist[song_ids][]" id="<%= song.id %>" value="<%= song.id %>"><%= song.title %> -- <%= song.artist%><br>
-  <% end %>
-  <br>
+    <p>Select any song to add to your setlist</p> 
+      <% @songs.each do |song| %>
+        <input type="checkbox" name="setlist[song_ids][]" id="<%= song.id %>" value="<%= song.id %>"><%= song.title %> -- <%= song.artist%><br>
+      <% end %>
 
-  <input type="submit" value="Create New Setlist">
-</form>
+    <br>
 
-<% end %>
+    <input type="submit" value="Create New Setlist">
+  </form>
