@@ -1,0 +1,25 @@
+<h1> Edit </h1>
+<form action="/setlists/<%=@setlist.id%>" method="POST">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+   
+      <label>Name of Setlist: </label>
+      <input type="text" name="setlist[name]" id="setlist_name"  value="<%=@setlist.name%>"><br><br>
+
+      <label>Type of show: </label>
+      <input type="text" name="setlist[type_of_show]" id="setlist_type_of_show" value="<%=@setlist.type_of_show%>"><br><br>
+
+      <label>Location: </label>
+      <input type="text" name="setlist[location]" id="setlist_location" value="<%=@setlist.location%>"><br><br>
+
+      <label>Date: </label>
+      <input type='date' name="setlist[date]" id="setlist_date" value="<%=@setlist.date%>"><br><br>
+
+    <h3>Select any song to add to your setlist</h3>
+      <% @songs.each do |song| %>
+        <input type="checkbox" name="setlist[song_ids][]" id="<%= song.id %>" value="<%= song.id %>" <%='checked' if @setlist.songs.include?(song) %>> <%= song.title %> -- <%= song.artist%><br>
+      <% end %>
+
+    <br>
+
+  <input type="submit" value="Update Setlist">
+</form>
