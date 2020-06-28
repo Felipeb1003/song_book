@@ -1,8 +1,22 @@
+<h2>My Songs:</h2><br>
 
-<%if is_loggged_in? %>
-        <p><a href="/songs">My Songs</a> </p>
-        <p><a href="/songs/new">Add New Song</a> </p>
-        <p><a href="/setlists">My Setlists</a> </p>
-        <p><a href="/setlists/new">Create New Setlist</a> </p>
-        <p><a href="/users/logout">Log Out</a></p>
-<%end%>
+    <ul>
+        <% @songs.each do |song|%>
+            <li><a href="/songs/<%=song.id%>"> <%=song.title%></a> -- <%=song.artist%></li><br>
+        <%end%>
+    </ul><br>
+    <div class="create-new">
+        <a href="/songs/new">Create New Song</a>
+    </div>
+    <br><br><br>
+    
+<h2>Setlist:</h2><br>
+
+    <ul>
+        <% @setlists.each do |setlist|%>
+            <li><a href="/setlists/<%=setlist.id%>"> <%=setlist.name%></a> </li><br>
+        <%end%>
+    </ul><br>
+    <div class="create-new">  
+        <a href="/setlists/new"  class="header" >Create New Setlist</a> 
+    </div>
