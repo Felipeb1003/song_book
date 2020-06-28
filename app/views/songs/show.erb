@@ -1,23 +1,20 @@
-<%if is_loggged_in? %>
+<h1><%=@song.user.username%></h1>
 
+  <p><label>Title: </label> <%=@song.title%> </p> 
+  <p><label>Artist: </label> <%=@song.artist%> </p> 
+  <p><label>Key: </label> <%=@song.key%></p>  
+  <p><label>Duration: </label> <%=@song.duration%></p> 
+  <label>Lyrics:</label><br><br> <p><%=@song.lyrics%></p> 
 
-    <ul>
-    <h3> Title: <%=@song.title%> </h3>
-    <h3>Artist: <%=@song.artist%> </h3><br>
-    <h4>Key: <%=@song.key%> </h4><br>
-    <h4>Duration: <%=@song.duration%> </h4><br>
-    <p>Lyrics: <%=@song.lyrics%></p>
-    </ul>
+  <%if @song.user == current_user%>
+    <div>
+      <form action="/songs/<%=@song.id%>/edit" method="GET" class="edit_and_delete">
+        <input type="submit" value="Edit">
+      </form>
 
-    <form action="/songs/<%=@song.id%>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="Delete">
-    <input type="submit" value="Delete">
-    </form>
-
-    <form action="/songs/<%=@song.id%>/edit" method="GET">
-    <input type="submit" value="Edit">
-    </form>
-
-    <p><a href="/users/:id">Home</a></p>
-    <p><a href="/users/logout">Log Out</a></p>
-<%end%>
+      <form action="/songs/<%=@song.id%>" method="POST" class="edit_and_delete">
+        <input id="hidden" type="hidden" name="_method" value="Delete">
+        <input type="submit" value="Delete">
+      </form>
+    </div>
+  <%end%>
