@@ -7,7 +7,6 @@ class CreateSongs < ActiveRecord::Migration
       t.text :duration
       t.text :lyrics
       t.integer :user_id
-      t.integer :setlist_id
     end
   end
 end

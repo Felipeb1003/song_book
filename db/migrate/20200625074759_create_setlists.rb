@@ -6,7 +6,6 @@ class CreateSetlists < ActiveRecord::Migration
       t.string :location
       t.date :date
       t.integer :user_id
-      t.integer :song_id
     end
 
   end
