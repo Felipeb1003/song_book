@@ -1,20 +1,20 @@
 <h1>Add a New Song</h1>
 
-<form action="/songs" method="POST">
-  <label>Title: </label>
-  <input type="text" name="song[title]" id="song_title"  required><br><br>
+  <form action="/songs" method="POST">
+    <label>Title: </label>
+    <input type="text" name="song[title]" id="song_title"  required><br><br>
 
-  <label>Artist: </label>
-  <input type="text" name="song[artist]" id="song_artist" required><br><br>
+    <label>Artist: </label>
+    <input type="text" name="song[artist]" id="song_artist" required><br><br>
 
-  <label>Key: </label>
-  <input type="text" name="song[key]" id="song_key"><br><br>
+    <label>Key: </label>
+    <input type="text" name="song[key]" id="song_key"><br><br>
 
-  <label>Duration: </label>
-  <input type='text' name='song[duration]' id='song_duration'><br><br>
- 
-  <label>Lyrics: </label>
-  <input type="text" name="song[lyrics]" id="song_lyrics" > <br><br>
+    <label>Duration: </label>
+    <input type='text' name='song[duration]' id='song_duration'><br><br>
+  
+    <label>Lyrics: </label><br>
+    <textarea name="song[lyrics]" rows="10" cols="80" id="song_lyrics"></textarea><br><br>
 
-  <input type="submit" value="Add New Song">
-</form>
+    <input type="submit" value="Add New Song">
+  </form>
