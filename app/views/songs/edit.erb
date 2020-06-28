@@ -1,23 +1,21 @@
-<%if is_loggged_in? %>
-
+<h1> Edit </h1>
 <form action="/songs/<%=@song.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
-  <h3> Edit </h3>
+
   <label>Title:</label>
   <input type="text" name="song[title]" id="song_title" value="<%=@song.title%>" ><br><br>
 
   <label>Artist:</label>
   <input type="text" name="song[artist]" id="song_artist" value="<%=@song.artist%>"><br><br>
+  
   <label>Key:</label>
   <input type="text" name="song[key]" id="song_key" value="<%=@song.key%>"><br><br>
 
   <label>Duration:</label>
   <input type='text' name='song[duration]' id='song_duration' value="<%=@song.duration%>"><br><br>
  
-  <label>Lyrics: </label>
-  <input type="text" name="song[lyrics]" id="song_lyrics" value="<%=@song.lyrics%>"> <br><br>
+  <label>Lyrics: </label><br>
+  <textarea name="song[lyrics]" rows="10" cols="80" id="song_lyrics"><%=@song.lyrics%></textarea><br><br>
 
   <input type="submit" value="Update Song">
 </form>
-
-<% end %>
