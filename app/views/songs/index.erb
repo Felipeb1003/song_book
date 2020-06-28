@@ -1,15 +1,6 @@
-<%if is_loggged_in? %>
-
-  <h1>Songs List:</h1>
-    <ul>
-        <% @songs.each do |song|%>
-        <li>*<a href="/songs/<%=song.id%>"> <%=song.title%></a> by <%=song.artist%></li>
-        <%end%>
-    </ul><br>
-
-    <p><a href="/setlists/new">Create New Setlist</a></p>
-    <p><a href="/songs/new">Add New Song</a></p>
-    <p><a href="/users/:id">Home</a></p>
-    <p><a href="/users/logout">Log Out</a></p>
-
-<%end%>
+<h1>Songs</h1>
+  <ul>
+    <% @songs.each do |song|%>
+      <li><a href="/songs/<%=song.id%>"> <%=song.title%></a> - <%=song.artist%> created by <%=song.user.username%></li><br>
+    <%end%>
+  </ul>
