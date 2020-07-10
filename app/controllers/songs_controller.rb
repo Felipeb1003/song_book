@@ -5,7 +5,7 @@ class SongsController < ApplicationController
         @songs = Song.all
 
         erb :'/songs/index'
-    end    
+    end  
     
     get '/songs/new' do 
         check_if_user_logged_in
@@ -33,16 +33,17 @@ class SongsController < ApplicationController
         check_if_user_logged_in
         @song = Song.find_by_id(params[:id])
         
-        if current_user == @song.user
+        if @song && current_user == @song.user
             erb :'/songs/edit'
         else
             redirect to "/users/#{current_user.id}"
         end    
     end   
     
+   
     patch '/songs/:id' do 
         check_if_user_logged_in
-        @song = Song.find_by_id(params[:id])
+        set_song
 
         if current_user == @song.user
             @song.update(params[:song])
@@ -55,7 +56,7 @@ class SongsController < ApplicationController
     
     delete '/songs/:id' do 
         check_if_user_logged_in
-        @song = Song.find_by_id(params[:id])
+        set_song
        
         if current_user == @song.user
             @song.delete
