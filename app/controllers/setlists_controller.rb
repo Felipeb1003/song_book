@@ -34,7 +34,7 @@ class SetlistsController < ApplicationController
         check_if_user_logged_in
         @setlist = Setlist.find_by_id(params[:id])
 
-        if current_user == @setlist.user
+        if @setlist && current_user == @setlist.user
             @songs = current_user.songs
             erb :'/setlists/edit'
         else 
@@ -42,14 +42,14 @@ class SetlistsController < ApplicationController
         end        
     end   
 
+    
+
     patch '/setlists/:id' do 
         check_if_user_logged_in
-        @setlist = Setlist.find_by_id(params[:id])
+        set_setlist
         
-
         if current_user == @setlist.user
             @setlist.update(params[:setlist])
-            @setlist.save
         
             redirect to "/setlists/#{@setlist.id}"
         else   
@@ -59,7 +59,7 @@ class SetlistsController < ApplicationController
     
     delete '/setlists/:id' do 
         check_if_user_logged_in
-        @setlist = Setlist.find_by_id(params[:id])
+        set_setlist
         
         if current_user == @setlist.user
             @setlist.delete
